@@ -69,12 +69,17 @@ function Form(props) {
     setData(data);
     // setErrors(errors);
   };
-
+  const rowStyle = {
+    marginTop: "50px",
+  };
+  const h2Style = {
+    marginBottom: "30px",
+  };
   return (
     <div>
-      <div className="row">
+      <div className="row" style={rowStyle}>
         <div className="col-md-6 offset-md-3 mb-4">
-          <h2>{props.title}</h2>
+          <h2 style={h2Style}>{props.title}</h2>
           <form>
             {props.dataInput.map((params) => {
               return (
@@ -90,7 +95,7 @@ function Form(props) {
               );
             })}
           </form>
-          <button className="btn btn-primary m-3" onClick={handleSubmit}>
+          <button className="btn btn-primary mt-3" onClick={handleSubmit}>
             {props.buttonSubmit}
           </button>
         </div>
