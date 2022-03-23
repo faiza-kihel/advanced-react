@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Routers from "./router/routers";
+import { BrowserRouter } from "react-router-dom";
+import UserContext from "./store/userContext";
+import React, { useState } from "react";
+import Logout from "./store/logout";
 
 function App() {
+  const [currentUser, setName] = useState({ jwt: null });
+  const handleLoggedIn = () => {
+    const newJwt = localStorage.getItem("token");
+    const user = { jwt: newJwt };
+    setName(user);
+  };
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    const newJwt = null;
+    setName(newJwt);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider
+      value={{
+        currentUser: currentUser,
+        onLoggedIn: handleLoggedIn,
+        onLogOut: handleLogOut,
+      }}
+    >
+      <BrowserRouter>
+        <Routers />
+      </BrowserRouter>
+    </UserContext.Provider>
   );
 }
 
