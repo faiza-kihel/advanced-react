@@ -23,8 +23,11 @@ function Navbar() {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+            <div
+              className="collapse navbar-collapse"
+              id="navbarSupportedContent"
+            >
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <NavLink
                     className="nav-link"
@@ -49,15 +52,11 @@ function Navbar() {
                     User Register
                   </NavLink>
                 </li>
-                <li className="float-right display-f justify-content-middle">
-                  <Logout />
-                </li>
               </ul>
 
-              {/* right menu */}
-              {/* <form class="d-flex">
-                <ConnectMenu />
-              </form> */}
+              <form className="d-flex">
+                <Logout />
+              </form>
             </div>
           </div>
         </nav>
